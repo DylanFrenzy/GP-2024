@@ -10,6 +10,7 @@ const TURN_RATE = 180
 
 func print_stuff():
 	DebugDraw2D.set_text("pos", position)
+<<<<<<< Updated upstream
 	DebugDraw2D.set_text("global position", global_position)
 	DebugDraw2D.set_text("rotation", rotation)
 	DebugDraw2D.set_text("rotation deg", rad_to_deg(rotation))
@@ -20,6 +21,18 @@ func print_stuff():
 	DebugDraw2D.set_text("global_transform.x", global_transform.x)
 	DebugDraw2D.set_text("global_transform.y", global_transform.y)
 	DebugDraw2D.set_text("vel", velocity)
+=======
+	DebugDraw2D.set_text("rot", rotation)
+	DebugDraw2D.set_text("rot deg", deg_to_rad(rotation))
+	DebugDraw2D.set_text("transform x", transform.x)
+	DebugDraw2D.set_text("transform y", transform.y)
+	DebugDraw2D.set_text("global transform x", global_transform.x)
+	DebugDraw2D.set_text("global transform y", global_transform.y)
+	DebugDraw2D.set_text("vel", velocity)
+	
+func _process(delta: float) -> void:
+	_print_stuff()
+>>>>>>> Stashed changes
 	
 func _process(delta: float) -> void:
 	print_stuff()
