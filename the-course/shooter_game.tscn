@@ -10,8 +10,11 @@
 script = ExtResource("1_c5ar1")
 
 [node name="dude" parent="." instance=ExtResource("2_gm47b")]
+rotation = 4.29795
 color = Color(0, 1, 0.25, 0.847059)
 speed = 500.0
+lives = 100
+ammo = 100
 explosion = ExtResource("3_c5ar1")
 
 [node name="ufo_spawner" type="Marker2D" parent="."]
@@ -38,7 +41,7 @@ offset_left = 8.0
 offset_top = 221.0
 offset_right = 338.0
 offset_bottom = 296.0
-text = "AMMO: 100"
+text = "AMMO: 900"
 
 [node name="level" type="Label" parent="CanvasLayer"]
 offset_left = 8.0

@@ -21,13 +21,12 @@ extends CharacterBody2D
 
 @export var turn_rate:float=180
 @export var speed:float=100
-
 # Used to create the bullets
 @export var bullet_scene:PackedScene
 @export var bullet_spawn:Node2D
 
-@export var lives:int = 100
-@export var ammo:int = 100
+@export var lives:int = 3
+@export var ammo:int = 900
 @export var ufo_count:int = 0
 
 # If crash create explosion
