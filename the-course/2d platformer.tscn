@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://og7wuo6h6htc"]
+
+[ext_resource type="Texture2D" uid="uid://dnku55dcgmtb2" path="res://icon.svg" id="1_xl4s6"]
+[ext_resource type="Script" uid="uid://beqp4jtlwlvfk" path="res://character_body_2d.gd" id="2_6k0cy"]
+[ext_resource type="Texture2D" uid="uid://c844yfbd26ea8" path="res://sprites/bug.png" id="3_oii3v"]
+[ext_resource type="Script" uid="uid://clsbxhh70hd5" path="res://bomb.gd" id="4_07bmi"]
+[ext_resource type="Texture2D" uid="uid://csfstyjj1bcb6" path="res://sprites/bomb.png" id="4_oii3v"]
+[ext_resource type="Script" uid="uid://c0owss52r86uy" path="res://enemy_dude.gd" id="6_6q7cn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rupq"]
+size = Vector2(421, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07bmi"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6q7cn"]
+size = Vector2(14, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_07bmi"]
+radius = 149.516
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(324, 199)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(3.3125, 1)
+texture = ExtResource("1_xl4s6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_1rupq")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(763, 165)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+scale = Vector2(3.3125, 1)
+texture = ExtResource("1_xl4s6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_1rupq")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(1196, 180)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3"]
+scale = Vector2(3.3125, 1)
+texture = ExtResource("1_xl4s6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_1rupq")
+
+[node name="Bob" type="CharacterBody2D" parent="."]
+position = Vector2(155, 119)
+script = ExtResource("2_6k0cy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bob"]
+shape = SubResource("RectangleShape2D_07bmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bob"]
+texture = ExtResource("3_oii3v")
+
+[node name="Bomb" type="Area2D" parent="."]
+position = Vector2(610, 78)
+script = ExtResource("4_07bmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bomb"]
+texture = ExtResource("4_oii3v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb"]
+shape = SubResource("RectangleShape2D_6q7cn")
+
+[node name="Enemy Dude" type="CharacterBody2D" parent="."]
+position = Vector2(813, 89)
+scale = Vector2(-0.26664, 0.217726)
+script = ExtResource("6_6q7cn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy Dude"]
+texture = ExtResource("1_xl4s6")
+
+[node name="Area2D" type="Area2D" parent="Enemy Dude"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Dude/Area2D"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("CircleShape2D_07bmi")
+
+[connection signal="area_entered" from="Bomb" to="Bob" method="_on_bomb_area_entered"]
+[connection signal="area_entered" from="Bomb" to="Bomb" method="_on_area_entered"]
+[connection signal="body_entered" from="Bomb" to="Bomb" method="_on_body_entered"]
+[connection signal="area_entered" from="Enemy Dude/Area2D" to="Bob" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Enemy Dude/Area2D" to="Enemy Dude" method="_on_area_2d_area_entered"]
